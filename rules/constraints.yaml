@@ -1,0 +1,42 @@
+# Medication scheduling constraints
+# Define interaction rules and timing requirements
+
+constraints:
+  # Drug interaction constraints
+  - type: drug_interaction
+    drug_a: levothyroxine
+    drug_b: calcium
+    min_gap: 4h
+    description: "Levothyroxine should be taken at least 4 hours apart from calcium supplements"
+  
+  - type: drug_interaction
+    drug_a: levothyroxine
+    drug_b: iron
+    min_gap: 4h
+    description: "Levothyroxine should be taken at least 4 hours apart from iron supplements"
+  
+  - type: drug_interaction
+    drug_a: metformin
+    drug_b: alcohol
+    min_gap: 24h
+    description: "Avoid alcohol while taking metformin due to lactic acidosis risk"
+  
+  # Food requirement constraints
+  - type: food_requirement
+    drug_a: levothyroxine
+    description: "Must be taken on empty stomach, 30-60 minutes before breakfast"
+  
+  - type: food_requirement
+    drug_a: metformin
+    description: "Should be taken with food to reduce gastrointestinal side effects"
+  
+  # Timing constraints
+  - type: time_gap
+    drug_a: lisinopril
+    min_gap: 24h
+    description: "Once daily dosing - maintain consistent timing"
+  
+  - type: time_gap
+    drug_a: metformin
+    min_gap: 8h
+    description: "Twice daily dosing - space doses evenly (morning and evening)"

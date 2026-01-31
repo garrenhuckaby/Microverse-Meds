@@ -8,18 +8,33 @@ env/
 venv/
 ENV/
 .venv
+*.egg-info/
+dist/
+build/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+.DS_Store
 
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
+*.log
 
 # Project specific
 *.log
 .env
+
+# API Keys (IMPORTANT - never commit these!)
+.env.local
+secrets.yaml
+*_secret.yaml
+
+# Temporary files
+*.tmp
+*.bak
+~*

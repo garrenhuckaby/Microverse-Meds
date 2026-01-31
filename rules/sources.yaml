@@ -1,0 +1,44 @@
+# API source configurations
+# Define which APIs to use for different data types
+
+primary_sources:
+  drug_information:
+    provider: OpenFDA
+    base_url: https://api.fda.gov/drug
+    endpoints:
+      - label.json    # Drug labeling
+      - event.json    # Adverse events
+    notes: "Free, no API key required"
+  
+  interactions:
+    provider: OpenFDA
+    fallback: RxNorm
+    notes: "Start with OpenFDA, add RxNorm if needed"
+
+secondary_sources:
+  drug_interactions:
+    provider: RxNorm
+    base_url: https://rxnav.nlm.nih.gov/REST
+    endpoints:
+      - interaction.json
+    notes: "Free NIH service for drug interactions"
+
+ai_providers:
+  rescheduling:
+    provider: Google Gemini
+    model: gemini-pro
+    api_key_env: GEMINI_API_KEY
+    notes: "Primary AI for constraint reasoning"
+  
+  fallback:
+    provider: Rule-based
+    notes: "Simple heuristics if AI unavailable"
+
+rate_limits:
+  OpenFDA:
+    requests_per_minute: 240
+    requests_per_day: 120000
+  
+  RxNorm:
+    requests_per_minute: 20
+    notes: "Be conservative to avoid blocking"

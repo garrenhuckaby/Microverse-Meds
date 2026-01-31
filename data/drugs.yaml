@@ -1,0 +1,78 @@
+# Sample drug database
+# This would normally be populated from API calls, but here are some examples
+
+medications:
+  - name: Levothyroxine
+    generic_name: levothyroxine sodium
+    brand_names:
+      - Synthroid
+      - Levoxyl
+    dosage: 100mcg
+    frequency: once daily
+    scheduled_times:
+      - "06:00"
+    constraints:
+      empty_stomach: true
+      with_food: false
+      min_interval: 24h
+      timing_note: "Take 30-60 minutes before breakfast"
+    
+  - name: Metformin
+    generic_name: metformin hydrochloride
+    brand_names:
+      - Glucophage
+      - Fortamet
+    dosage: 500mg
+    frequency: twice daily
+    scheduled_times:
+      - "08:00"
+      - "20:00"
+    constraints:
+      empty_stomach: false
+      with_food: true
+      min_interval: 8h
+      timing_note: "Take with meals"
+  
+  - name: Lisinopril
+    generic_name: lisinopril
+    brand_names:
+      - Prinivil
+      - Zestril
+    dosage: 10mg
+    frequency: once daily
+    scheduled_times:
+      - "08:00"
+    constraints:
+      empty_stomach: false
+      with_food: false
+      min_interval: 24h
+      timing_note: "Can be taken with or without food, but be consistent"
+
+# Interaction database (simplified)
+interactions:
+  levothyroxine:
+    - drug: calcium_supplements
+      severity: moderate
+      action: "Separate by 4+ hours"
+    - drug: iron_supplements
+      severity: moderate
+      action: "Separate by 4+ hours"
+    - drug: antacids
+      severity: moderate
+      action: "Separate by 4+ hours"
+  
+  metformin:
+    - drug: alcohol
+      severity: high
+      action: "Avoid alcohol - increases lactic acidosis risk"
+    - drug: iodinated_contrast
+      severity: high
+      action: "Hold before imaging procedures"
+  
+  lisinopril:
+    - drug: nsaids
+      severity: moderate
+      action: "May reduce effectiveness, monitor blood pressure"
+    - drug: potassium_supplements
+      severity: high
+      action: "Risk of hyperkalemia, use with caution"

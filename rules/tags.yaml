@@ -1,0 +1,43 @@
+# Medication tags and categories
+# Used for grouping and filtering medications
+
+categories:
+  blood_pressure:
+    - lisinopril
+    - amlodipine
+    - losartan
+  
+  diabetes:
+    - metformin
+    - insulin
+    - glipizide
+  
+  thyroid:
+    - levothyroxine
+    - liothyronine
+  
+  cholesterol:
+    - atorvastatin
+    - simvastatin
+
+timing_preferences:
+  morning:
+    - levothyroxine  # Must be morning, empty stomach
+    - metformin      # First dose
+  
+  evening:
+    - metformin      # Second dose
+    - atorvastatin   # Better absorbed at night
+  
+  flexible:
+    - lisinopril     # Can be any time, but consistent
+
+critical_timing:
+  # Medications where timing is crucial
+  - levothyroxine  # Thyroid function depends on consistent timing
+  - insulin        # Blood sugar control requires precise timing
+
+less_critical:
+  # Medications where a few hours variation is acceptable
+  - lisinopril
+  - atorvastatin
